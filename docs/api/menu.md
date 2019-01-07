@@ -26,9 +26,11 @@ opens the associated menu. The indicated character in the button label gets an
 underline. The `&` character is not displayed on the button label.
 
 Passing `null` will remove the menu bar on Windows and Linux but has no
-effect on macOS.
+effect on macOS (it will suppress the default menu, however).
 
 **Note:** This API has to be called after the `ready` event of `app` module.
+
+**Note:** Default menu is created automatically if the app does not set one.
 
 #### `Menu.getApplicationMenu()`
 
