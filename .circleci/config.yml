@@ -38,11 +38,6 @@ executors:
     macos:
       xcode: "8.3.3"
 
-  mac-large-xcode-9-4-1:
-    resource_class: large
-    macos:
-      xcode: "9.4.1"
-
 # Build configurations options.
 env-debug-build: &env-debug-build
   GN_CONFIG: //electron/build/args/debug.gn
@@ -796,7 +791,7 @@ jobs:
     <<: *steps-checkout
 
   mac-checkout:
-    executor: mac-large-xcode-9-4-1
+    executor: mac-large
     <<: *steps-checkout
 
   # Layer 2: Builds.
@@ -1126,7 +1121,7 @@ jobs:
     <<: *steps-verify-mksnapshot
 
   mac-tests:
-    executor: mac
+    executor: mac-large
     environment:
       <<: *env-stack-dumping
     <<: *steps-tests
