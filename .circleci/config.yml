@@ -440,8 +440,8 @@ steps-checkout: &steps-checkout
         paths:
           - ~/.gclient-cache
         keys:
-          - v1-gclient-cache-{{ arch }}-{{ checksum "src/electron/DEPS" }}
-          - v1-gclient-cache-{{ arch }}-
+          - v2-gclient-cache-{{ arch }}-{{ checksum "src/electron/DEPS" }}
+          - v2-gclient-cache-{{ arch }}-
     - run:
         name: Set GIT_CACHE_PATH to make gclient to use the cache
         command: |
@@ -452,7 +452,7 @@ steps-checkout: &steps-checkout
     - save_cache:
         paths:
           - ~/.gclient-cache
-        key: v1-gclient-cache-{{ arch }}-{{ checksum "src/electron/DEPS" }}
+        key: v2-gclient-cache-{{ arch }}-{{ checksum "src/electron/DEPS" }}
 
     - run:
         name: Remove some unused data to avoid storing it in the workspace
