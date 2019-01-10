@@ -434,14 +434,15 @@ steps-checkout: &steps-checkout
     - *step-checkout-electron
     - *step-depot-tools-get
     - *step-depot-tools-add-to-path
+    - *step-install-nodejs-on-mac
     - *step-install-gnutar-on-mac
 
     - restore_cache:
         paths:
           - ~/.gclient-cache
         keys:
-          - v2-gclient-cache-{{ arch }}-{{ checksum "src/electron/DEPS" }}
-          - v2-gclient-cache-{{ arch }}-
+          - v1-gclient-cache-{{ arch }}-{{ checksum "src/electron/DEPS" }}
+          - v1-gclient-cache-{{ arch }}-
     - run:
         name: Set GIT_CACHE_PATH to make gclient to use the cache
         command: |
@@ -452,7 +453,7 @@ steps-checkout: &steps-checkout
     - save_cache:
         paths:
           - ~/.gclient-cache
-        key: v2-gclient-cache-{{ arch }}-{{ checksum "src/electron/DEPS" }}
+        key: v1-gclient-cache-{{ arch }}-{{ checksum "src/electron/DEPS" }}
 
     - run:
         name: Remove some unused data to avoid storing it in the workspace
